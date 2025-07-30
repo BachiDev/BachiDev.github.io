@@ -1,6 +1,9 @@
 # Fabian Bachmayer - Portfolio Website
 
-This is the personal portfolio website of Fabian Bachmayer, showcasing my skills, projects, and services as a full-stack developer.
+[Check Out Live](https://bachidev.github.io/)
+[Check Out Portfolio](https://bachidev.github.io/my-portfolio/)
+
+This is a small informational website of me, showcasing my services as a full-stack developer.
 
 ## Technical Details
 
@@ -9,13 +12,3 @@ This site is built with:
 - **TypeScript**: For type-safe JavaScript.
 - **Tailwind CSS**: For utility-first CSS styling.
 - **Particles.js**: Integrated via the `ParticlesBackground` component to create an interactive and visually engaging background.
-
-## Getting Started
-
-To run the development server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

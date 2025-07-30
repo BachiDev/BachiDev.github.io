@@ -10,7 +10,7 @@ export function Header() {
     <>
       <header className="px-4 lg:px-6 h-14 flex items-center fixed top-0 w-full bg-neutral-950 bg-opacity-80 backdrop-blur-sm z-50">
         <Link className="flex items-center justify-center" href="#">
-          <Image src="/fb-logo.svg" alt="Fabian Bachmayer Logo" width={24} height={24} className="h-6 w-6 text-purple-400" />
+          <Image src="/android-chrome-192x192.png" alt="Fabian Bachmayer Logo" width={24} height={24} className="h-6 w-6 text-purple-400" />
           <span className="ml-2 text-lg font-semibold">Fabian Bachmayer</span>
         </Link>
         <nav className="ml-auto hidden md:flex gap-4 sm:gap-6">
