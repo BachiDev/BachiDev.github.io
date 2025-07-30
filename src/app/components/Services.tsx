@@ -17,12 +17,12 @@ export function Services() {
           <ServiceCard 
             icon={<Image src="/code.svg" alt="Code Icon" width={40} height={40} className="w-10 h-10 text-purple-400" />}
             title="Web Development"
-            description="I build modern, responsive, and performant web applications using the latest technologies."
+            description="Building modern, responsive, and performant web applications with the latest technologies."
           />
           <ServiceCard 
             icon={<Image src="/smartphone.svg" alt="Smartphone Icon" width={40} height={40} className="w-10 h-10 text-purple-400" />}
             title="Mobile Development"
-            description="I create beautiful and user-friendly mobile apps for iOS and Android."
+            description="Creating beautiful and user-friendly mobile apps for both iOS and Android platforms."
           />
           <ServiceCard 
             icon={<Image src="/pentool.svg" alt="Pen Tool Icon" width={40} height={40} className="w-10 h-10 text-purple-400" />}
@@ -37,7 +37,7 @@ export function Services() {
           <ServiceCard 
             icon={<Image src="/window.svg" alt="Window Icon" width={40} height={40} className="w-10 h-10 text-purple-400" />}
             title="Testing"
-            description="I can help you test your application to ensure it is bug-free and ready for production."
+            description="Thoroughly testing your application to ensure it's bug-free and production-ready."
           />
           <ServiceCard 
             icon={<Image src="/globe.svg" alt="Globe Icon" width={40} height={40} className="w-10 h-10 text-purple-400" />}

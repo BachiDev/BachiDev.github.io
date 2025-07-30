@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "./Container";
 
 export function About() {
@@ -24,13 +25,16 @@ export function About() {
                 </div>
             </div>
           </div>
-          <img
-            alt="About Me"
-            className="mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full"
-            height="550"
-            src="https://placehold.co/550x550/0a0a0a/f5f5f5?text=Fabian+Bachmayer"
-            width="550"
-          />
+          <div className="relative">
+            <Image
+              alt="Fabian Bachmayer"
+              className="mx-auto overflow-hidden rounded-xl object-contain sm:w-full"
+              height="550"
+              src="/CV-Pic-Transparent.png"
+              width="550"
+            />
+            <div className="absolute bottom-0 left-0 right-0 h-1/10 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
+          </div>
         </div>
     </Container>
   );
