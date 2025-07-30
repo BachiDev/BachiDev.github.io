@@ -1,0 +1,54 @@
+'use client'
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+
+export function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <>
+      <header className="px-4 lg:px-6 h-14 flex items-center fixed top-0 w-full bg-neutral-950 bg-opacity-80 backdrop-blur-sm z-50">
+        <Link className="flex items-center justify-center" href="#">
+          <Image src="/fb-logo.svg" alt="Fabian Bachmayer Logo" width={24} height={24} className="h-6 w-6 text-purple-400" />
+          <span className="ml-2 text-lg font-semibold">Fabian Bachmayer</span>
+        </Link>
+        <nav className="ml-auto hidden md:flex gap-4 sm:gap-6">
+          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#services">
+            Services
+          </Link>
+          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#projects">
+            Projects
+          </Link>
+          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#about">
+            About Me
+          </Link>
+          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#contact">
+            Contact
+          </Link>
+        </nav>
+        <button className="ml-auto md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+          <Image src="/menu.svg" alt="Menu Icon" width={24} height={24} className="h-6 w-6" />
+        </button>
+      </header>
+      {menuOpen && (
+        <div className="fixed top-14 left-0 w-full bg-neutral-950 bg-opacity-95 z-40 md:hidden">
+          <nav className="flex flex-col items-center gap-4 py-4">
+            <Link className="text-sm font-medium hover:underline underline-offset-4" href="#services" onClick={() => setMenuOpen(false)}>
+              Services
+            </Link>
+            <Link className="text-sm font-medium hover:underline underline-offset-4" href="#projects" onClick={() => setMenuOpen(false)}>
+              Projects
+            </Link>
+            <Link className="text-sm font-medium hover:underline underline-offset-4" href="#about" onClick={() => setMenuOpen(false)}>
+              About Me
+            </Link>
+            <Link className="text-sm font-medium hover:underline underline-offset-4" href="#contact" onClick={() => setMenuOpen(false)}>
+              Contact
+            </Link>
+          </nav>
+        </div>
+      )}
+    </>
+  );
+}

@@ -1,4 +1,4 @@
-import { JSX, SVGProps } from "react";
+import { JSX } from "react";
 
 type ServiceCardProps = {
   icon: JSX.Element;
