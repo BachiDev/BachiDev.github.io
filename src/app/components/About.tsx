@@ -28,7 +28,7 @@ export function About() {
           <div className="relative">
             <Image
               alt="Fabian Bachmayer"
-              className="mx-auto overflow-hidden rounded-xl object-contain sm:w-full"
+              className="mx-auto overflow-hidden rounded-xl object-contain sm:w-full md:max-w-md"
               height="550"
               src="/CV-Pic-Transparent.png"
               width="550"
