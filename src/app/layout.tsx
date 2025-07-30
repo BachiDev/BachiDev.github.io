@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Fabian Bachmayer",
-  description: "Fabian Bachmayer - Full-Stack Freelance Developer",
+  description: "Full-Stack Freelance Developer",
 };
 
 export default function RootLayout({
