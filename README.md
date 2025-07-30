@@ -1,6 +1,7 @@
 # Fabian Bachmayer - Portfolio Website
 
 [Check Out Live](https://bachidev.github.io/)
+
 [Check Out Portfolio](https://bachidev.github.io/my-portfolio/)
 
 This is a small informational website of me, showcasing my services as a full-stack developer.
