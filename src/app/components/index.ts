@@ -5,7 +5,6 @@ export * from './Contact';
 export * from './Footer';
 export * from './Header';
 export * from './Hero';
-export * from './ProjectCard';
-export * from './Projects';
 export * from './ServiceCard';
 export * from './Services';
+export * from './TechStack';

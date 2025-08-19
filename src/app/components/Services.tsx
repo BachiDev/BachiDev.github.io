@@ -7,7 +7,7 @@ export function Services() {
     <Container id="services" className="bg-neutral-900 flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-purple-400">Services</h2>
+            <h2 className="section-heading">Services</h2>
             <p className="max-w-[900px] text-neutral-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               I offer a wide range of services to help you build your next digital product.
             </p>

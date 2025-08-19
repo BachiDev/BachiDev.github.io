@@ -2,6 +2,7 @@ export function Footer() {
   return (
     <footer className="flex flex-col gap-4 sm:flex-row py-6 w-full shrink-0 items-start px-4 md:px-6 border-t border-neutral-800">
       <div id="imprint" className="text-xs text-neutral-400 text-center sm:text-left">
+        <p>Imprint:</p>
         <p>Fabian Bachmayer</p>
         <p>Bernoullistraße 4/4/20</p>
         <p>1220 Vienna, Austria</p>

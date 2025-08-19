@@ -1,0 +1,63 @@
+
+import { Container } from './Container';
+
+const frontend = {
+  title: 'Frontend',
+  skills: ['React', 'Next.js', 'Angular', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap CSS'],
+};
+
+const backend = {
+  title: 'Backend',
+  skills: ['Node.js','Java', 'Spring Boot','Hibernate', 'Swagger', 'Python', 'C', 'C++', 'C#'],
+};
+
+const databases = {
+  title: 'Databases',
+  skills: ['PostgreSQL', 'MySQL', 'Firestore'],
+};
+
+const cloud = {
+  title: 'Cloud Services',
+  skills: ['Google Cloud', 'Firebase', 'Supabase', 'Netlify'],
+};
+
+const testing = {
+  title: 'Testing',
+  skills: ['JUnit', 'Mockito'],
+};
+
+const other = {
+  title: 'Other',
+  skills: ['Git', 'Docker', 'CI/CD', 'Agile', 'Scrum', 'Turbopack', 'Vite'],
+};
+
+const tech = [frontend, backend, databases, cloud, testing, other];
+
+export function TechStack() {
+  return (
+    <section id="tech-stack" className="bg-neutral-900 mb-12">
+      <Container>
+        <div className="mx-auto max-w-4xl space-y-8">
+          <div className="space-y-2 text-center">
+            <h2 className="section-heading">My Tech Stack</h2>
+            <p className="max-w-[900px] text-neutral-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">A selection of technologies I use to build modern web applications.</p>
+          </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {tech.map((category) => (
+              <div key={category.title} className="rounded-lg border p-6 shadow-sm bg-neutral-950 transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg">
+                <h3 className="mb-4 text-xl font-bold">{category.title}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <div key={skill} className="rounded-md bg-neutral-800 px-3 py-1 text-sm font-medium text-purple-400">
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}

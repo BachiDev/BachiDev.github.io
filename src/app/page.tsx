@@ -1,13 +1,5 @@
 'use client'
-import {
-  About,
-  Contact,
-  Footer,
-  Header,
-  Hero,
-  Projects,
-  Services,
-} from "./components";
+import { About, Contact, Footer, Header, Hero, Services, TechStack } from './components';
 import FloatingActionButton from "./components/FloatingActionButton";
 
 export default function Component() {
@@ -17,8 +9,9 @@ export default function Component() {
       <main className="flex-1">
         <Hero />
         <Services />
-        <Projects />
+        
         <About />
+        <TechStack />
         <Contact />
         <FloatingActionButton href="https://github.com/BachiDev/BachiDev.github.io" />
       </main>

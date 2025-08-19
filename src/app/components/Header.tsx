@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from './Button';
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,19 +14,21 @@ export function Header() {
           <Image src="/android-chrome-192x192.png" alt="Fabian Bachmayer Logo" width={24} height={24} className="h-6 w-6 text-purple-400" />
           <span className="ml-2 text-lg font-semibold">Fabian Bachmayer</span>
         </Link>
-        <nav className="ml-auto hidden md:flex gap-4 sm:gap-6">
+        <nav className="ml-auto hidden md:flex gap-4 items-center">
           <Link className="text-sm font-medium hover:underline underline-offset-4" href="#services">
             Services
           </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#projects">
-            Projects
-          </Link>
+          
           <Link className="text-sm font-medium hover:underline underline-offset-4" href="#about">
             About Me
+          </Link>
+          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#tech-stack">
+            Tech Stack
           </Link>
           <Link className="text-sm font-medium hover:underline underline-offset-4" href="#contact">
             Contact
           </Link>
+          <Button href="https://bachidev.github.io/my-portfolio/">Portfolio</Button>
         </nav>
         <button className="ml-auto md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
           <Image src="/menu.svg" alt="Menu Icon" width={24} height={24} className="h-6 w-6" />
@@ -37,15 +40,17 @@ export function Header() {
             <Link className="text-sm font-medium hover:underline underline-offset-4" href="#services" onClick={() => setMenuOpen(false)}>
               Services
             </Link>
-            <Link className="text-sm font-medium hover:underline underline-offset-4" href="#projects" onClick={() => setMenuOpen(false)}>
-              Projects
-            </Link>
+            
             <Link className="text-sm font-medium hover:underline underline-offset-4" href="#about" onClick={() => setMenuOpen(false)}>
               About Me
+            </Link>
+            <Link className="text-sm font-medium hover:underline underline-offset-4" href="#tech-stack" onClick={() => setMenuOpen(false)}>
+              Tech Stack
             </Link>
             <Link className="text-sm font-medium hover:underline underline-offset-4" href="#contact" onClick={() => setMenuOpen(false)}>
               Contact
             </Link>
+            <Button href="https://bachidev.github.io/my-portfolio/" onClick={() => setMenuOpen(false)}>Portfolio</Button>
           </nav>
         </div>
       )}

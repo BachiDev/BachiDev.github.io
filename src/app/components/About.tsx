@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "./Container";
+import { Button } from "./Button";
 
 export function About() {
   return (
@@ -9,21 +10,12 @@ export function About() {
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-purple-400">About Me</h2>
               <p className="max-w-[600px] text-neutral-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                I&apos;m a passionate full-stack developer with a love for creating beautiful and functional web and mobile applications. I have a strong background in both front-end and back-end technologies, and I&apos;m always eager to learn new things.
+                With a solid background in Telecommunications and AI Training, I bring several years of experience in the software industry. I am adept at contributing to all phases of the software development lifecycle, from initial concept and design to deployment and maintenance. My goal is to leverage my expertise to create robust, efficient, and scalable software solutions.
               </p>
             </div>
-            <div className="space-y-4">
-                <h3 className="text-2xl font-bold">My Skills</h3>
-                <div className="flex flex-wrap gap-4">
-                    <span className="bg-neutral-800 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">React</span>
-                    <span className="bg-neutral-800 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">Next.js</span>
-                    <span className="bg-neutral-800 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
-                    <span className="bg-neutral-800 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">TypeScript</span>
-                    <span className="bg-neutral-800 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
-                    <span className="bg-neutral-800 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">GraphQL</span>
-                    <span className="bg-neutral-800 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">PostgreSQL</span>
-                </div>
-            </div>
+            <a href="/CV.pdf" download className="mt-4">
+              <Button>Download CV</Button>
+            </a>
           </div>
           <div className="relative">
             <Image
