@@ -9,7 +9,7 @@ export function Footer() {
         <p>Email: bachiaidev@gmail.com</p>
         <br/>
         <p>Services in automatic data processing and information technology</p>
-        <p>UID: </p>
+        <p>UID: ATU79961178</p>
         <p>Court of commercial registration: Commercial Court of Vienna</p>
         <p>Member of the Austrian Economic Chamber</p>
       </div>
