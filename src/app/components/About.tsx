@@ -13,7 +13,7 @@ export function About() {
                 With a solid background in Telecommunications and AI Training, I bring several years of experience in the software industry. I am adept at contributing to all phases of the software development lifecycle, from initial concept and design to deployment and maintenance. My goal is to leverage my expertise to create robust, efficient, and scalable software solutions.
               </p>
             </div>
-            <a href="/CV.pdf" download className="mt-4">
+            <a href="./CV_Bachmayer.pdf" download className="mt-4">
               <Button>Download CV</Button>
             </a>
           </div>

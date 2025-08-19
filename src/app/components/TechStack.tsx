@@ -3,12 +3,12 @@ import { Container } from './Container';
 
 const frontend = {
   title: 'Frontend',
-  skills: ['React', 'Next.js', 'Angular', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap CSS'],
+  skills: ['React', 'Next.js', 'Angular', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind', 'Bootstrap'],
 };
 
 const backend = {
   title: 'Backend',
-  skills: ['Node.js','Java', 'Spring Boot','Hibernate', 'Swagger', 'Python', 'C', 'C++', 'C#'],
+  skills: ['Node.js','Java', 'Spring Boot','Hibernate', 'Swagger', 'Python'],
 };
 
 const databases = {
@@ -18,7 +18,7 @@ const databases = {
 
 const cloud = {
   title: 'Cloud Services',
-  skills: ['Google Cloud', 'Firebase', 'Supabase', 'Netlify'],
+  skills: ['Google Cloud', 'Firebase', 'Supabase', 'Netlify', 'Render'],
 };
 
 const testing = {
@@ -28,7 +28,7 @@ const testing = {
 
 const other = {
   title: 'Other',
-  skills: ['Git', 'Docker', 'CI/CD', 'Agile', 'Scrum', 'Turbopack', 'Vite'],
+  skills: ['Git', 'Docker', 'CI/CD', 'Agile', 'Scrum', 'BPMN','Turbopack', 'Vite'],
 };
 
 const tech = [frontend, backend, databases, cloud, testing, other];

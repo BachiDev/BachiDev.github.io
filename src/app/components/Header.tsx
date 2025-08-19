@@ -28,7 +28,7 @@ export function Header() {
           <Link className="text-sm font-medium hover:underline underline-offset-4" href="#contact">
             Contact
           </Link>
-          <Button href="https://bachidev.github.io/my-portfolio/">Portfolio</Button>
+          <Button href="https://bachidev.github.io/my-portfolio/" className="!w-auto !max-w-none">Portfolio</Button>
         </nav>
         <button className="ml-auto md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
           <Image src="/menu.svg" alt="Menu Icon" width={24} height={24} className="h-6 w-6" />
@@ -50,7 +50,7 @@ export function Header() {
             <Link className="text-sm font-medium hover:underline underline-offset-4" href="#contact" onClick={() => setMenuOpen(false)}>
               Contact
             </Link>
-            <Button href="https://bachidev.github.io/my-portfolio/" onClick={() => setMenuOpen(false)}>Portfolio</Button>
+            <Button href="https://bachidev.github.io/my-portfolio/" onClick={() => setMenuOpen(false)} className="!w-auto !max-w-none">Portfolio</Button>
           </nav>
         </div>
       )}

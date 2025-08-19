@@ -13,3 +13,4 @@ This site is built with:
 - **TypeScript**: For type-safe JavaScript.
 - **Tailwind CSS**: For utility-first CSS styling.
 - **Particles.js**: Integrated via the `ParticlesBackground` component to create an interactive and visually engaging background.
+- **Web3Forms**: Integrated for handling contact form submissions, providing a reliable backend for email delivery.
