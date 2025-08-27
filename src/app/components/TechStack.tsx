@@ -3,7 +3,7 @@ import { Container } from './Container';
 
 const frontend = {
   title: 'Frontend',
-  skills: ['React', 'Next.js', 'Angular', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind', 'Bootstrap'],
+  skills: ['React', 'Next.js', 'Angular', 'Flutter', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind', 'Bootstrap'],
 };
 
 const backend = {
@@ -18,7 +18,7 @@ const databases = {
 
 const cloud = {
   title: 'Cloud Services',
-  skills: ['Google Cloud', 'Firebase', 'Supabase', 'Netlify', 'Render'],
+  skills: ['Google Cloud', 'Firebase', 'Supabase', 'Vercel', 'Render'],
 };
 
 const testing = {
@@ -28,7 +28,7 @@ const testing = {
 
 const other = {
   title: 'Other',
-  skills: ['Git', 'Docker', 'CI/CD', 'Agile', 'Scrum', 'BPMN','Turbopack', 'Vite'],
+  skills: ['Git', 'Docker', 'CI/CD', 'Agile', 'Scrum', 'BPMN','Turbopack', 'Gradle', 'Maven'],
 };
 
 const tech = [frontend, backend, databases, cloud, testing, other];
@@ -44,7 +44,7 @@ export function TechStack() {
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {tech.map((category) => (
-              <div key={category.title} className="rounded-lg border p-6 shadow-sm bg-neutral-950 transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg">
+              <div key={category.title} className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 flex flex-col h-full font-mono transition-all duration-300 hover:shadow-[0_0_15px_5px_rgba(59,130,246,0.5)]">
                 <h3 className="mb-4 text-xl font-bold">{category.title}</h3>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
