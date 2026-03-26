@@ -13,7 +13,7 @@ const backend = {
 
 const databases = {
   title: 'Databases',
-  skills: ['PostgreSQL', 'MySQL', 'Firestore'],
+  skills: ['PostgreSQL', 'MySQL', 'Firestore', 'PL/SQL'],
 };
 
 const cloud = {

@@ -19,7 +19,7 @@ export function Hero() {
           Fabian Bachmayer
         </h1>
         <p className="mx-auto max-w-[700px] text-neutral-400 md:text-xl">
-          Full-Stack Freelance Developer
+          Full-Stack Developer
         </p>
         <Button href="https://bachidev.github.io/my-portfolio/">
           View My Portfolio
