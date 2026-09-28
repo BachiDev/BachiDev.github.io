@@ -1,17 +1,35 @@
-'use client'
-import { useRef, useState } from 'react';
-import { Button } from './Button';
+"use client";
+import { useRef, useState } from "react";
+import { Button } from "./Button";
+import { isContactFormEnabled, web3FormsKey } from "@/lib/env";
+import { profile } from "@/data/profile";
+
+type Status = "idle" | "sending" | "success" | "error";
 
 export function Web3ContactForm() {
+  const [status, setStatus] = useState<Status>("idle");
   const [result, setResult] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
+  if (!isContactFormEnabled) {
+    return (
+      <p className="mt-8 text-center text-sm text-neutral-400">
+        The contact form is currently unavailable. Please reach out directly at{" "}
+        <a href={`mailto:${profile.email}`} className="text-purple-400 hover:underline">
+          {profile.email}
+        </a>
+        .
+      </p>
+    );
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setResult("Please wait...");
+    setStatus("sending");
+    setResult("Sending…");
     const formData = new FormData(e.currentTarget);
 
-    formData.append("access_key", "13bb6870-31ec-4a08-a741-42c2d2bd80a3");
+    formData.append("access_key", web3FormsKey);
 
     const object = Object.fromEntries(formData.entries());
     const json = JSON.stringify(object);
@@ -21,33 +39,32 @@ export function Web3ContactForm() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json"
+          Accept: "application/json",
         },
-        body: json
+        body: json,
       });
       const jsonResponse = await response.json();
-      if (response.status === 200) {
-        setResult(jsonResponse.message);
-        if (formRef.current) {
-          formRef.current.reset();
-        }
+      if (response.ok) {
+        setStatus("success");
+        setResult("Message sent — I'll get back to you soon.");
+        formRef.current?.reset();
       } else {
-        setResult(jsonResponse.message);
-        setTimeout(() => {
-          setResult("");
-        }, 3000);
+        setStatus("error");
+        setResult(
+          jsonResponse.message || "Something went wrong. Please try again or email me directly.",
+        );
       }
     } catch (error) {
-      console.log(error);
-      setResult("Something went wrong!");
-      setTimeout(() => {
-        setResult("");
-      }, 3000);
+      console.error(error);
+      setStatus("error");
+      setResult("Something went wrong. Please try again or email me directly.");
     }
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="mt-8 w-full max-w-lg mx-auto">
+    <form ref={formRef} onSubmit={handleSubmit} className="w-full">
+      {/* Honeypot field for Web3Forms bot detection — must stay empty. */}
+      <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div className="relative z-0">
           <input
@@ -98,10 +115,16 @@ export function Web3ContactForm() {
           Your Message
         </label>
       </div>
-      <Button type="submit" className="mt-6 w-full">
-        Send Message
+      <Button type="submit" disabled={status === "sending"} className="mt-6 w-full">
+        {status === "sending" ? "Sending…" : "Send Message"}
       </Button>
-      <p className="mt-4 text-center text-sm text-neutral-400">{result}</p>
+      <p
+        role="status"
+        aria-live="polite"
+        className={`mt-4 text-center text-sm ${status === "success" ? "text-emerald-400" : status === "error" ? "text-red-400" : "text-neutral-400"}`}
+      >
+        {result}
+      </p>
     </form>
   );
 }

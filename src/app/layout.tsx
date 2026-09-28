@@ -1,7 +1,12 @@
-import type { Metadata } from "next";
-import {Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import CookieConsent from "./components/CookieConsent";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -11,6 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Fabian Bachmayer",
   description: "Full-Stack Freelance Developer",
+  metadataBase: new URL("https://bachi.dev"),
+};
+
+export const viewport: Viewport = {
+  themeColor: "#09090b",
 };
 
 export default function RootLayout({
@@ -20,11 +30,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         {children}
-        <CookieConsent/>
+        <CookieConsent />
+        <noscript>
+          <style>{`.reveal{opacity:1 !important;transform:none !important;}`}</style>
+        </noscript>
       </body>
     </html>
   );

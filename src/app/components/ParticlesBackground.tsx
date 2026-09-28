@@ -1,11 +1,8 @@
+'use client';
+
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import {
-  type Container,
-  type ISourceOptions,
-  MoveDirection,
-  OutMode,
-} from "@tsparticles/engine";
+import { type ISourceOptions, MoveDirection, OutMode } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
 export function ParticlesBackground() {
@@ -18,10 +15,6 @@ export function ParticlesBackground() {
       setInit(true);
     });
   }, []);
-
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log("Particles container loaded:", container);
-  };
 
   const options: ISourceOptions = useMemo(
     () => ({
@@ -94,20 +87,12 @@ export function ParticlesBackground() {
         },
       },
       detectRetina: true,
-      
     }),
     [],
   );
 
   if (init) {
-    return (
-      <Particles
-        id="tsparticles"
-        className="w-full h-full"
-        particlesLoaded={particlesLoaded}
-        options={options}
-      />
-    );
+    return <Particles id="tsparticles" className="w-full h-full" options={options} />;
   }
 
   return null;
