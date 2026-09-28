@@ -62,7 +62,7 @@ export function Footer() {
             <p className="text-xs text-zinc-400">
               © {new Date().getFullYear()} Fabian Bachmayer. All rights reserved.
             </p>
-            <p className="text-xs text-zinc-500">
+            <p className="text-xs text-zinc-400">
               Privacy: no cookies, no tracking. Contact form messages are emailed via Web3Forms and
               never shared.
             </p>

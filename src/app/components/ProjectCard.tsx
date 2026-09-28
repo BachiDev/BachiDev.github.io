@@ -11,6 +11,8 @@ export function ProjectCard({ project }: { project: Project }) {
   const [enlarged, setEnlarged] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  // Card-size thumbnail; the full-size image is reserved for the lightbox.
+  const thumbnail = project.image.replace(/\.webp$/, "-sm.webp");
 
   const close = useCallback(() => setEnlarged(false), []);
 
@@ -43,7 +45,7 @@ export function ProjectCard({ project }: { project: Project }) {
           className="group relative mb-4 block h-48 w-full cursor-zoom-in overflow-hidden rounded-md"
         >
           <Image
-            src={project.image}
+            src={thumbnail}
             alt={`Screenshot of ${project.name}`}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

@@ -330,7 +330,9 @@ src/
 - [x] A11y: project-type kicker bumped to zinc-400 for contrast; form `aria-live`/`role=status`, accessible lightbox dialog, skip link, focus rings, reduced-motion + noscript fallbacks all in. Still to run in a real browser: axe + keyboard-only walkthrough.
 - [x] Perf: particles tamed (violet tint, 60fps cap, speed 1.2, 25–50 count by viewport, no click-push on touch, static gradient for reduced-motion). Deliberately skipped `next/dynamic` for the FX — the component already renders null until the engine loads, and `ssr:false` would force a client boundary for little gain at 158 kB first load.
 - [x] Privacy: cookie banner **removed** (site sets no cookies — banner was pure noise); footer now carries a one-line privacy note. FAB kept for now — revisit if it annoys.
-- [ ] Still to run post-deploy: Lighthouse in Chrome on bachi.dev (target 95+/95+/95+/100), OG debugger (LinkedIn/GitHub preview), Search Console re-verification for the new domain.
+- [x] Still to run post-deploy: Lighthouse in Chrome on bachi.dev (target 95+/95+/95+/100), OG debugger (LinkedIn/GitHub preview), Search Console re-verification for the new domain.
+  - Result 2026-09-29 (desktop): **100 / 96 / 100 / 100** — only miss was `color-contrast` on the new footer privacy line (zinc-500 on zinc-900, 3.67:1) → bumped to zinc-400. Remaining audit notes are non-actionable: unminified-JS = a Chrome extension, cache lifetimes = GitHub Pages headers (not controllable), legacy-JS = Next polyfills.
+  - Follow-up from the report: portrait PNG was 1 MB (910 KB waste) → `CV-Pic.webp` (800w, 44 KB); card thumbnails split out as `-sm.webp` (640w, ~⅓ size), full-size kept for the lightbox. Rebuilt + verified in `out/`.
 
 ### Phase 4 — Launch & iterate (ongoing)
 

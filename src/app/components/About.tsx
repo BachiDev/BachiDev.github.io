@@ -24,9 +24,9 @@ export function About() {
           <Image
             alt="Fabian Bachmayer"
             className="mx-auto overflow-hidden rounded-xl object-contain sm:w-full md:max-w-md"
-            height="550"
-            src="/CV-Pic-Transparent.png"
-            width="550"
+            height="800"
+            src="/CV-Pic.webp"
+            width="800"
             sizes="(max-width: 768px) 100vw, 550px"
           />
           <div
