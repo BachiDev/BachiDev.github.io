@@ -7,7 +7,7 @@ import { Section } from "../components/ui/Section";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Work · Fabian Bachmayer",
+  title: "Selected Work",
   description:
     "Selected projects by Fabian Bachmayer — full-stack web apps, machine learning, and frontend builds.",
 };

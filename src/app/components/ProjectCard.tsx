@@ -31,7 +31,7 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <>
       <Card className="text-center">
-        <p className="mb-1 font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+        <p className="mb-1 font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">
           {project.type}
         </p>
         <h3 className="mb-4 text-xl font-bold">{project.name}</h3>

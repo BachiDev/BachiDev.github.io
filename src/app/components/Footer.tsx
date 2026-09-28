@@ -58,9 +58,15 @@ export function Footer() {
             <p>Court of commercial registration: Commercial Court of Vienna</p>
             <p>Member of the Austrian Economic Chamber</p>
           </div>
-          <p className="text-xs text-zinc-400 sm:ml-auto sm:text-right">
-            © {new Date().getFullYear()} Fabian Bachmayer. All rights reserved.
-          </p>
+          <div className="flex flex-col gap-1 sm:ml-auto sm:text-right">
+            <p className="text-xs text-zinc-400">
+              © {new Date().getFullYear()} Fabian Bachmayer. All rights reserved.
+            </p>
+            <p className="text-xs text-zinc-500">
+              Privacy: no cookies, no tracking. Contact form messages are emailed via Web3Forms and
+              never shared.
+            </p>
+          </div>{" "}
         </div>
       </div>
     </footer>

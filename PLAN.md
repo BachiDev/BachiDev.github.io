@@ -324,12 +324,13 @@ src/
 - [x] Selected Work + Process (4 steps) + Contact upgrade (info column, sending/success/error states, `aria-live`, FAQ `<details>`) + Footer (nav, socials, back-to-top). Section rhythm re-alternated (About raised, TechStack base).
 - [x] Hero rewrite (eyebrow, dual CTA, socials) done in Phase 1. Trust bar + About timeline/photo/CV rename + particles tuning + Cookie/FAB decision still open → moved to Phase 3/4.
 
-### Phase 3 — SEO / a11y / perf hardening (0.5–1 day)
+### Phase 3 — SEO / a11y / perf hardening (done 2026-09-29)
 
-- [ ] Full metadata + OG cover + JSON-LD + robots/sitemap/manifest.
-- [ ] A11y pass (keyboard, focus, contrast, form announcements, reduced motion) + axe check.
-- [ ] Perf pass (dynamic FX, image sizing, font subsets, JS budget) + mobile Lighthouse 95+.
-- [ ] Privacy note + imprint review.
+- [x] Full metadata (title template, description, keywords, `metadataBase: https://bachi.dev`) + OG/Twitter cards with generated `og-cover.png` (1200×630, `scripts/generate-og-cover.mjs`) + JSON-LD `Person` + `robots.ts`/`sitemap.ts`/`manifest.ts` (all `force-static` for export; verified in `out/`).
+- [x] A11y: project-type kicker bumped to zinc-400 for contrast; form `aria-live`/`role=status`, accessible lightbox dialog, skip link, focus rings, reduced-motion + noscript fallbacks all in. Still to run in a real browser: axe + keyboard-only walkthrough.
+- [x] Perf: particles tamed (violet tint, 60fps cap, speed 1.2, 25–50 count by viewport, no click-push on touch, static gradient for reduced-motion). Deliberately skipped `next/dynamic` for the FX — the component already renders null until the engine loads, and `ssr:false` would force a client boundary for little gain at 158 kB first load.
+- [x] Privacy: cookie banner **removed** (site sets no cookies — banner was pure noise); footer now carries a one-line privacy note. FAB kept for now — revisit if it annoys.
+- [ ] Still to run post-deploy: Lighthouse in Chrome on bachi.dev (target 95+/95+/95+/100), OG debugger (LinkedIn/GitHub preview), Search Console re-verification for the new domain.
 
 ### Phase 4 — Launch & iterate (ongoing)
 
