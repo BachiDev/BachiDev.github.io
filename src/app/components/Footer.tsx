@@ -62,6 +62,17 @@ export function Footer() {
             <p className="text-xs text-zinc-400">
               © {new Date().getFullYear()} Fabian Bachmayer. All rights reserved.
             </p>
+            <p className="text-xs text-zinc-500">
+              Built with Next.js & Tailwind —{" "}
+              <Link
+                href="https://github.com/BachiDev/BachiDev.github.io"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-zinc-300 hover:underline"
+              >
+                source on GitHub
+              </Link>
+            </p>
             <p className="text-xs text-zinc-400">
               Privacy: no cookies, no tracking. Contact form messages are emailed via Web3Forms and
               never shared.

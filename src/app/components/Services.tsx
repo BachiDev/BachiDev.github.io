@@ -1,4 +1,4 @@
-import { Bug, ClipboardList, Code2, Database, PenTool, Smartphone } from "lucide-react";
+import { Code2, Database, Rocket, Smartphone } from "lucide-react";
 import { Card } from "./ui/Card";
 import { Reveal } from "./ui/Reveal";
 import { Section } from "./ui/Section";
@@ -8,37 +8,34 @@ const services = [
     icon: Code2,
     title: "Web Development",
     description:
-      "Building modern, responsive, and performant web applications with the latest technologies.",
+      "Modern, responsive, and performant web apps built with React, Next.js, and TypeScript.",
+    points: [
+      "Responsive, accessible interfaces",
+      "SEO-friendly server rendering",
+      "Deployed, monitored, documented",
+    ],
   },
   {
     icon: Smartphone,
     title: "Mobile Development",
-    description:
-      "Creating beautiful and user-friendly mobile apps for both iOS and Android platforms.",
-  },
-  {
-    icon: PenTool,
-    title: "UI/UX Design",
-    description:
-      "I design intuitive and engaging user interfaces that provide a great user experience.",
-  },
-  {
-    icon: ClipboardList,
-    title: "Requirement Analyses",
-    description:
-      "I can help you define and document the requirements for your project to ensure a successful outcome.",
-  },
-  {
-    icon: Bug,
-    title: "Testing",
-    description:
-      "Thoroughly testing your application to ensure it's bug-free and production-ready.",
+    description: "User-friendly mobile apps for iOS and Android from a single Flutter codebase.",
+    points: ["One codebase, both platforms", "Native-feel UI", "Store release handling"],
   },
   {
     icon: Database,
-    title: "Database Management",
-    description:
-      "I can help you design, build, and maintain your database to ensure it is scalable and secure.",
+    title: "API & Data",
+    description: "REST APIs and databases designed to be scalable, secure, and easy to maintain.",
+    points: [
+      "Documented REST APIs",
+      "PostgreSQL / Firestore data models",
+      "Auth, Stripe payments, cloud deploys",
+    ],
+  },
+  {
+    icon: Rocket,
+    title: "Quality & Delivery",
+    description: "From requirements to production: scoped, tested, automated, and launched.",
+    points: ["Requirements scoping", "Automated tests + CI/CD", "Launch & post-launch support"],
   },
 ];
 
@@ -48,18 +45,29 @@ export function Services() {
       id="services"
       tone="raised"
       eyebrow="Services"
-      title="Services"
-      lede="I offer a wide range of services to help you build your next digital product."
+      title="What I can do for you"
+      lede="Four focused offers — each one ends with something live, not a slide deck."
     >
-      <div className="mx-auto grid max-w-5xl items-stretch gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto grid max-w-4xl items-stretch gap-6 md:grid-cols-2">
         {services.map((service, index) => (
-          <Reveal key={service.title} delay={(index % 3) * 80}>
-            <Card className="items-center text-center">
+          <Reveal key={service.title} delay={(index % 2) * 80}>
+            <Card>
               <div className="mb-4 text-brand-400">
                 <service.icon className="h-10 w-10" strokeWidth={1.5} />
               </div>
               <h3 className="mb-2 text-xl font-bold">{service.title}</h3>
-              <p className="text-zinc-400">{service.description}</p>
+              <p className="mb-4 text-zinc-400">{service.description}</p>
+              <ul className="mt-auto space-y-2 text-left text-sm text-zinc-300">
+                {service.points.map((point) => (
+                  <li key={point} className="flex items-start gap-2">
+                    <span
+                      aria-hidden="true"
+                      className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-400"
+                    />
+                    {point}
+                  </li>
+                ))}
+              </ul>
             </Card>
           </Reveal>
         ))}

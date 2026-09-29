@@ -6,7 +6,7 @@ export const profile = {
   role: "Full-Stack Developer",
   tagline: "I build fast, maintainable web and mobile apps — from requirements to production.",
   location: "Vienna, Austria (CET)",
-  languages: "English · German",
+  languages: "German (Native) · English · Spanish (basics)",
   email: "fabian@bachi.dev",
   // Toggle the availability badge in the hero.
   available: true,

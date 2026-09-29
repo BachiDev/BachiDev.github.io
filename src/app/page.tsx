@@ -9,7 +9,6 @@ import {
   TechStack,
   WorkTeaser,
 } from "./components";
-import FloatingActionButton from "./components/FloatingActionButton";
 
 export default function Component() {
   return (
@@ -23,7 +22,6 @@ export default function Component() {
         <TechStack />
         <Process />
         <Contact />
-        <FloatingActionButton href="https://github.com/BachiDev/BachiDev.github.io" />
       </main>
       <Footer />
     </div>

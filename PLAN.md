@@ -329,18 +329,27 @@ src/
 - [x] Full metadata (title template, description, keywords, `metadataBase: https://bachi.dev`) + OG/Twitter cards with generated `og-cover.png` (1200×630, `scripts/generate-og-cover.mjs`) + JSON-LD `Person` + `robots.ts`/`sitemap.ts`/`manifest.ts` (all `force-static` for export; verified in `out/`).
 - [x] A11y: project-type kicker bumped to zinc-400 for contrast; form `aria-live`/`role=status`, accessible lightbox dialog, skip link, focus rings, reduced-motion + noscript fallbacks all in. Still to run in a real browser: axe + keyboard-only walkthrough.
 - [x] Perf: particles tamed (violet tint, 60fps cap, speed 1.2, 25–50 count by viewport, no click-push on touch, static gradient for reduced-motion). Deliberately skipped `next/dynamic` for the FX — the component already renders null until the engine loads, and `ssr:false` would force a client boundary for little gain at 158 kB first load.
-- [x] Privacy: cookie banner **removed** (site sets no cookies — banner was pure noise); footer now carries a one-line privacy note. FAB kept for now — revisit if it annoys.
+- [x] Privacy: cookie banner **removed** (site sets no cookies — banner was pure noise); footer now carries a one-line privacy note. FAB **removed** 2026-09-29 (floating "View Source Code" = template clutter for a recruiter audience); open-source signal preserved as a quiet "source on GitHub" footer line.
 - [x] Still to run post-deploy: Lighthouse in Chrome on bachi.dev (target 95+/95+/95+/100), OG debugger (LinkedIn/GitHub preview), Search Console re-verification for the new domain.
   - Result 2026-09-29 (desktop): **100 / 96 / 100 / 100** — only miss was `color-contrast` on the new footer privacy line (zinc-500 on zinc-900, 3.67:1) → bumped to zinc-400. Remaining audit notes are non-actionable: unminified-JS = a Chrome extension, cache lifetimes = GitHub Pages headers (not controllable), legacy-JS = Next polyfills.
   - Follow-up from the report: portrait PNG was 1 MB (910 KB waste) → `CV-Pic.webp` (800w, 44 KB); card thumbnails split out as `-sm.webp` (640w, ~⅓ size), full-size kept for the lightbox. Rebuilt + verified in `out/`.
+  - Result 2026-09-29 after fixes — desktop **100 / 100 / 100 / 100**; mobile **98 / 100 / 100 / 100**. The 2 mobile points are LCP 2.3s on the hero subhead paragraph (text LCP under simulated Moto G4 throttling; TTFB 52 ms + 150 ms render delay — i.e. throttled font rendering, nothing structural). No action taken; well above the 95+ targets.
 
 ### Phase 4 — Launch & iterate (ongoing)
 
 - [ ] Merge to `main` → Pages deploy; verify live (all anchors, form end-to-end, 404-free, OG debugger).
 - [ ] Add privacy-friendly analytics (Plausible/Umami, cookieless) + measure CTA/form rates for 2–4 weeks.
+  - Dropped 2026-09-29 per owner: site is for recruiters, not marketing — no analytics, which also keeps the "no tracking" privacy note true.
 - [ ] Testimonials outreach (3 asks); add section when 2 permissions land.
-- [ ] Archive `BachiDev/my-portfolio` (README redirect note) after `/work` is live and `/my-portfolio/` links verified redirecting.
+  - Dropped 2026-09-29 per owner: no stats bar (thin history), no testimonial quotes (doesn't want third-party quotes on the site).
+- [x] Archive `BachiDev/my-portfolio` (README redirect note) after `/work` is live and `/my-portfolio/` links verified redirecting.
+  - Done 2026-09-29 as a redirect shim instead of archiving: repo now serves only `page.tsx` → `window.location.replace("https://bachi.dev/work")` + fallback UI; all components, data, and 44 public assets deleted; README marked RETIRED. Bonus fix: its `next.config.ts` dual `module.exports`/`export default` pattern silently dropped `output: "export"` (local builds never exported) → rewritten clean. Verified `out/` contains only the redirect. Push `master` to deploy the shim.
+  - Decision 2026-09-29: keep the shim repo alive, do NOT delete or archive it — old CVs in the wild link to `/my-portfolio/`, and only a live repo keeps those links working (archiving risks freezing/invalidating the Pages deployment).
+  - Verified live 2026-09-29: `bachidev.github.io/my-portfolio/` serves the shim ("This portfolio has moved → bachi.dev/work"); OG/Twitter tags confirmed in served `bachi.dev` HTML with absolute `og-cover.png` URLs.
 - [ ] Consider per-project `/work/[slug]` case-study pages (problem → approach → outcome, static params) — Phase 4 stretch, not part of initial fusion.
+- [x] Content round 2026-09-29: services cut 6 → 4 (Web / Mobile / API & Data / Quality & Delivery, each with outcome line + 3 scope bullets, 2-col grid, new "What I can do for you" heading).
+  - CV regenerated 2026-09-29 (`scripts/generate-cv.py`, ReportLab, Jake-style): per-bullet tech stacks, civil service dropped, languages folded into skills, tightened spacing → clean 1-pager `public/Fabian-Bachmayer-CV.pdf`; site Download button repointed, old PDFs deleted.
+  - About bio upgraded 2026-09-29: wall-of-text → 2 short paragraphs + icon fact rows (location, languages, email) + CV button with "PDF · 1 page" + availability badge; new full-width "My path so far" timeline (`src/data/timeline.ts`, 2016 → now, current entry highlighted).
 - [ ] Quarterly: refresh availability flag, project list, CV PDF date, copyright year (already dynamic).
 
 **Estimated total:** 3–5 focused days solo. Phase 1 alone delivers ~70% of the perceived "level up".

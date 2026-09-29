@@ -6,7 +6,7 @@ import { SocialLinks } from "./ui/SocialLinks";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[92svh] w-full flex-col items-center justify-center overflow-hidden px-4 py-24 text-center md:px-6">
+    <section className="relative flex min-h-svh w-full flex-col items-center justify-center overflow-hidden px-4 py-24 pt-32 text-center md:px-6">
       {/* Background elements */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <ParticlesBackground />
