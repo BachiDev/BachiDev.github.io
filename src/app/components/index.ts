@@ -4,6 +4,7 @@ export * from "./Contact";
 export * from "./Footer";
 export * from "./Header";
 export * from "./Hero";
+export * from "./JsonLd";
 export * from "./Process";
 export * from "./ProjectCard";
 export * from "./Services";

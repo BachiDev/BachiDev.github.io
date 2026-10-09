@@ -2,20 +2,19 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Languages, Menu, X } from "lucide-react";
 import { Button } from "./Button";
+import { anchorPath, homePath, workPath, type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 
-const links = [
-  { href: "/#services", label: "Services" },
-  { href: "/work", label: "Work" },
-  { href: "/#about", label: "About Me" },
-  { href: "/#tech-stack", label: "Tech Stack" },
-  { href: "/#process", label: "Process" },
-  { href: "/#contact", label: "Contact" },
-];
-
-export function Header() {
+export function Header({ locale, switchHref }: { locale: Locale; switchHref: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const dict = getDictionary(locale).header;
+
+  const links = dict.nav.map((item) => ({
+    href: item.id === null ? workPath(locale) : anchorPath(locale, item.id),
+    label: item.label,
+  }));
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -29,10 +28,10 @@ export function Header() {
   return (
     <>
       <header className="fixed top-0 z-50 flex h-14 w-full items-center bg-zinc-950/80 px-4 backdrop-blur-sm lg:px-6">
-        <Link className="flex items-center justify-center" href="/">
+        <Link className="flex items-center justify-center" href={homePath(locale)}>
           <Image
             src="/android-chrome-192x192.png"
-            alt="Fabian Bachmayer Logo"
+            alt={dict.logoAlt}
             width={24}
             height={24}
             className="h-6 w-6"
@@ -49,8 +48,17 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Button href="/#contact" size="sm">
-            Get in Touch
+          <Link
+            href={switchHref}
+            hrefLang={locale === "de" ? "en" : "de"}
+            aria-label={dict.switchLabel}
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-zinc-400 ring-1 ring-white/10 transition-colors hover:text-white hover:ring-brand-500/50"
+          >
+            <Languages className="h-4 w-4" aria-hidden="true" />
+            {dict.switchShort}
+          </Link>
+          <Button href={anchorPath(locale, "contact")} size="sm">
+            {dict.cta}
           </Button>
         </nav>
         <button
@@ -58,7 +66,7 @@ export function Header() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-label={menuOpen ? dict.closeMenu : dict.openMenu}
         >
           {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -76,8 +84,22 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <Button href="/#contact" size="sm" onClick={() => setMenuOpen(false)}>
-              Get in Touch
+            <Link
+              href={switchHref}
+              hrefLang={locale === "de" ? "en" : "de"}
+              aria-label={dict.switchLabel}
+              onClick={() => setMenuOpen(false)}
+              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-zinc-400 ring-1 ring-white/10 transition-colors hover:text-white hover:ring-brand-500/50"
+            >
+              <Languages className="h-4 w-4" aria-hidden="true" />
+              {dict.switchShort}
+            </Link>
+            <Button
+              href={anchorPath(locale, "contact")}
+              size="sm"
+              onClick={() => setMenuOpen(false)}
+            >
+              {dict.cta}
             </Button>
           </nav>
         </div>

@@ -1,5 +1,11 @@
 // Migrated from my-portfolio (BachiDev/my-portfolio). Single source of truth
 // for the landing teaser and the /work portfolio index.
+//
+// Locale-neutral fields (slugs, images, stack icons, URLs) live here.
+// Translatable copy (name, type, description, outcome) lives in
+// src/i18n/{en,de}.ts and is merged via getProjects(locale).
+import type { Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 
 export type ProjectStackItem = {
   name: string;
@@ -7,13 +13,8 @@ export type ProjectStackItem = {
   icon: string;
 };
 
-export type Project = {
+export type ProjectBase = {
   slug: string;
-  name: string;
-  type: string;
-  description: string;
-  /** One-line outcome — what the project demonstrates. No invented metrics. */
-  outcome: string;
   image: string;
   stack: ProjectStackItem[];
   githubUrl: string;
@@ -22,17 +23,19 @@ export type Project = {
   featured: boolean;
 };
 
+export type Project = ProjectBase & {
+  name: string;
+  type: string;
+  description: string;
+  /** One-line outcome — what the project demonstrates. No invented metrics. */
+  outcome: string;
+};
+
 const icon = (name: string) => `/tech/${name}.svg`;
 
-export const projects: Project[] = [
+const projectBases: ProjectBase[] = [
   {
     slug: "firebase-webstore",
-    name: "Firebase Webstore",
-    type: "Fullstack",
-    description:
-      "A demo e-commerce platform with user authentication and secure payment processing through Stripe, utilizing Webhooks and Cloud Functions to maintain real-time data synchronization.",
-    outcome:
-      "End-to-end demo shop: auth, Firestore sync, and Stripe payments via Cloud Functions webhooks.",
     image: "/work/webstore.webp",
     stack: [
       { name: "Google Cloud", icon: icon("google-cloud") },
@@ -51,12 +54,6 @@ export const projects: Project[] = [
   },
   {
     slug: "hand-gesture-control",
-    name: "Hand Gesture Control",
-    type: "Machine Learning",
-    description:
-      "Control a user interface using real-time hand gestures captured from your webcam. This project uses machine learning to recognize specific hand poses and translate them into actions like scrolling and toggling content.",
-    outcome:
-      "Real-time webcam gesture recognition driving a web UI — scrolling and toggling content hands-free.",
     image: "/work/hand-gesture-control.webp",
     stack: [
       { name: "TensorFlow", icon: icon("tensorflow") },
@@ -72,12 +69,6 @@ export const projects: Project[] = [
   },
   {
     slug: "crm-demo",
-    name: "CRM Demo",
-    type: "Fullstack",
-    description:
-      "A demo CRM application featuring a RESTful API and a database, designed to showcase modern web development practices with a focus on clean architecture and robust deployment.",
-    outcome:
-      "Cleanly layered reference build from Angular UI to containerized PostgreSQL, with a Swagger-documented REST API.",
     image: "/work/crm-demo.webp",
     stack: [
       { name: "Angular", icon: icon("angular") },
@@ -96,11 +87,6 @@ export const projects: Project[] = [
   },
   {
     slug: "weather-dashboard",
-    name: "Weather Dashboard",
-    type: "Frontend",
-    description:
-      "An interactive weather dashboard displaying real-time weather data and forecasts using the free Weather API from Open-Meteo.",
-    outcome: "Real-time forecasts on the free Open-Meteo API — no keys, no backend.",
     image: "/work/weather.webp",
     stack: [
       { name: "Next.js", icon: icon("next") },
@@ -116,11 +102,6 @@ export const projects: Project[] = [
   },
   {
     slug: "connect-4",
-    name: "Connect 4",
-    type: "Frontend",
-    description:
-      "A classical game of Connect 4, playable against other players or the computer, hosted on GitHub Pages.",
-    outcome: "Playable against a friend or the computer, shipped as a static page.",
     image: "/work/connect4.webp",
     stack: [
       { name: "Next.js", icon: icon("next") },
@@ -134,4 +115,14 @@ export const projects: Project[] = [
   },
 ];
 
-export const featuredProjects = projects.filter((project) => project.featured);
+export function getProjects(locale: Locale): Project[] {
+  const dict = getDictionary(locale);
+  return projectBases.map((base) => ({
+    ...base,
+    ...dict.projects[base.slug],
+  }));
+}
+
+export function getFeaturedProjects(locale: Locale): Project[] {
+  return getProjects(locale).filter((project) => project.featured);
+}

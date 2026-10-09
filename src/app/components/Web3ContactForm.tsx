@@ -3,18 +3,21 @@ import { useRef, useState } from "react";
 import { Button } from "./Button";
 import { isContactFormEnabled, web3FormsKey } from "@/lib/env";
 import { profile } from "@/data/profile";
+import type { Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export function Web3ContactForm() {
+export function Web3ContactForm({ locale }: { locale: Locale }) {
   const [status, setStatus] = useState<Status>("idle");
   const [result, setResult] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
+  const t = getDictionary(locale).form;
 
   if (!isContactFormEnabled) {
     return (
       <p className="mt-8 text-center text-sm text-neutral-400">
-        The contact form is currently unavailable. Please reach out directly at{" "}
+        {t.unavailable}{" "}
         <a href={`mailto:${profile.email}`} className="text-purple-400 hover:underline">
           {profile.email}
         </a>
@@ -26,7 +29,7 @@ export function Web3ContactForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
-    setResult("Sending…");
+    setResult(t.sendingStatus);
     const formData = new FormData(e.currentTarget);
 
     formData.append("access_key", web3FormsKey);
@@ -46,18 +49,16 @@ export function Web3ContactForm() {
       const jsonResponse = await response.json();
       if (response.ok) {
         setStatus("success");
-        setResult("Message sent — I'll get back to you soon.");
+        setResult(t.success);
         formRef.current?.reset();
       } else {
         setStatus("error");
-        setResult(
-          jsonResponse.message || "Something went wrong. Please try again or email me directly.",
-        );
+        setResult(jsonResponse.message || t.errorFallback);
       }
     } catch (error) {
       console.error(error);
       setStatus("error");
-      setResult("Something went wrong. Please try again or email me directly.");
+      setResult(t.errorFallback);
     }
   };
 
@@ -79,7 +80,7 @@ export function Web3ContactForm() {
             htmlFor="name"
             className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-neutral-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-purple-400"
           >
-            Your Name
+            {t.nameLabel}
           </label>
         </div>
         <div className="relative z-0">
@@ -95,7 +96,7 @@ export function Web3ContactForm() {
             htmlFor="email"
             className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-neutral-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-purple-400"
           >
-            Your Email
+            {t.emailLabel}
           </label>
         </div>
       </div>
@@ -112,11 +113,11 @@ export function Web3ContactForm() {
           htmlFor="message"
           className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-neutral-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-purple-400"
         >
-          Your Message
+          {t.messageLabel}
         </label>
       </div>
       <Button type="submit" disabled={status === "sending"} className="mt-6 w-full">
-        {status === "sending" ? "Sending…" : "Send Message"}
+        {status === "sending" ? t.sending : t.send}
       </Button>
       <p
         role="status"

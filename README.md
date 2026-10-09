@@ -33,14 +33,24 @@ Push to `main` → GitHub Actions (`.github/workflows/nextjs.yml`) builds the st
 ## Repo layout
 
 ```
-src/app/            # routes: / (landing), /work (portfolio), /my-portfolio (redirect shim)
+src/app/            # routes: / (landing), /work (portfolio), /de + /de/work (German), /my-portfolio (redirect shim)
 src/app/components/ # sections + ui/ primitives (Section, Card, Pill, Button, Reveal, SocialLinks)
-src/data/           # profile.ts (single source of truth), projects.ts
+src/data/           # profile.ts (locale-independent constants), projects.ts (locale-neutral project base)
+src/i18n/           # config.ts (locales + path helpers), en.ts / de.ts (copy), dictionaries.ts
 src/lib/            # cn(), env
-scripts/            # generate-cv.py, generate-og-cover.mjs
+scripts/            # generate-cv.py, generate-cv-de.py, generate-og-cover.mjs, generate-og-cover-de.mjs
 public/work/        # project screenshots (.webp + -sm thumbnails)
 public/tech/        # stack icons
 ```
+
+## Internationalization (EN + DE)
+
+- `/` and `/work` are English (default, preserves existing SEO/backlinks); `/de` and `/de/work` are the full German mirror (Sie-Form).
+- All user-visible copy lives in `src/i18n/en.ts` / `src/i18n/de.ts`, both satisfying the `Dictionary` type — a missing key in either language fails `typecheck`. Section components take a `locale` prop and read from `getDictionary(locale)`.
+- Locale-neutral data (project slugs/images/URLs, email, availability flag) stays in `src/data/`; translated project/timeline copy is merged per locale via `getProjects(locale)`.
+- Per-locale metadata (description, keywords, OG image, `hreflang` alternates, JSON-LD `Person`) is defined in each page; `sitemap.ts` lists all four URLs.
+- Static-export note: only the root layout may render `<html>`, so `lang="en"` is set there and German pages correct it at runtime (`src/app/de/html-lang.tsx`). Crawlers rely on the `hreflang` alternates.
+- German assets: `public/og-cover-de.png` (via `generate-og-cover-de.mjs`) and `public/Fabian-Bachmayer-CV-DE.pdf` (via `generate-cv-de.py`).
 
 ## Contact form
 

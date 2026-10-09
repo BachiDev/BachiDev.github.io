@@ -1,22 +1,23 @@
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import { profile } from "@/data/profile";
+import { anchorPath, workPath, type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { SocialLinks } from "./ui/SocialLinks";
 
-const nav = [
-  { href: "/#services", label: "Services" },
-  { href: "/work", label: "Work" },
-  { href: "/#about", label: "About" },
-  { href: "/#tech-stack", label: "Tech Stack" },
-  { href: "/#contact", label: "Contact" },
-];
+export function Footer({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
+  const t = dict.footer;
+  const nav = t.nav.map((item) => ({
+    href: item.id === null ? workPath(locale) : anchorPath(locale, item.id),
+    label: item.label,
+  }));
 
-export function Footer() {
   return (
     <footer className="w-full shrink-0 bg-zinc-900 px-4 py-8 md:px-6">
       <div className="mx-auto flex max-w-6xl flex-col gap-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm font-semibold text-zinc-200">Fabian Bachmayer</p>
+          <p className="text-sm font-semibold text-zinc-200">{t.brandName}</p>
           <nav className="flex flex-wrap gap-x-4 gap-y-2" aria-label="Footer">
             {nav.map((item) => (
               <Link
@@ -32,7 +33,7 @@ export function Footer() {
             <SocialLinks />
             <Link
               href="#"
-              aria-label="Back to top"
+              aria-label={t.backToTop}
               className="flex h-10 w-10 items-center justify-center rounded-full text-zinc-400 ring-1 ring-white/10 transition-colors hover:text-white hover:ring-brand-500/50"
             >
               <ArrowUp className="h-5 w-5" />
@@ -41,42 +42,39 @@ export function Footer() {
         </div>
         <div className="flex flex-col gap-4 sm:flex-row">
           <div id="imprint" className="scroll-mt-14 text-xs text-zinc-400 sm:text-left">
-            <p>Imprint:</p>
-            <p>Fabian Bachmayer</p>
-            <p>Bernoullistraße 4/4/20</p>
-            <p>1220 Vienna, Austria</p>
+            <p>{t.imprintTitle}</p>
+            {t.imprint.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
             <br />
             <p>
-              Email:{" "}
+              {t.emailLabel}{" "}
               <Link href={`mailto:${profile.email}`} className="hover:underline">
                 {profile.email}
               </Link>
             </p>
             <br />
-            <p>Services in automatic data processing and information technology</p>
-            <p>UID: ATU79961178</p>
-            <p>Court of commercial registration: Commercial Court of Vienna</p>
-            <p>Member of the Austrian Economic Chamber</p>
+            <p>{t.businessLine}</p>
+            <p>{t.uid}</p>
+            <p>{t.court}</p>
+            <p>{t.chamber}</p>
           </div>
           <div className="flex flex-col gap-1 sm:ml-auto sm:text-right">
             <p className="text-xs text-zinc-400">
-              © {new Date().getFullYear()} Fabian Bachmayer. All rights reserved.
+              © {new Date().getFullYear()} {t.brandName}. {t.rights}
             </p>
             <p className="text-xs text-zinc-500">
-              Built with Next.js & Tailwind —{" "}
+              {t.builtWith}{" "}
               <Link
                 href="https://github.com/BachiDev/BachiDev.github.io"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-zinc-300 hover:underline"
               >
-                source on GitHub
+                {t.sourceOnGithub}
               </Link>
             </p>
-            <p className="text-xs text-zinc-400">
-              Privacy: no cookies, no tracking. Contact form messages are emailed via Web3Forms and
-              never shared.
-            </p>
+            <p className="text-xs text-zinc-400">{t.privacy}</p>
           </div>{" "}
         </div>
       </div>

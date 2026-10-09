@@ -1,40 +1,14 @@
+import type { Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { Card } from "./ui/Card";
 import { Section } from "./ui/Section";
 
-const steps = [
-  {
-    n: "01",
-    title: "Discover",
-    text: "We scope goals, requirements, and success criteria in a short intro call — no 20-page spec needed up front.",
-  },
-  {
-    n: "02",
-    title: "Build",
-    text: "Weekly increments you can click through early; priorities stay adjustable as we learn more.",
-  },
-  {
-    n: "03",
-    title: "Test & harden",
-    text: "Automated tests plus accessibility and performance checks before anything ships.",
-  },
-  {
-    n: "04",
-    title: "Ship & support",
-    text: "Deployed, monitored, and documented — with support after go-live.",
-  },
-];
-
-export function Process() {
+export function Process({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale).process;
   return (
-    <Section
-      id="process"
-      tone="raised"
-      eyebrow="How I work"
-      title="From idea to production"
-      lede="A lightweight process that keeps surprises small and progress visible."
-    >
+    <Section id="process" tone="raised" eyebrow={dict.eyebrow} title={dict.title} lede={dict.lede}>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map((step) => (
+        {dict.steps.map((step) => (
           <Card key={step.n}>
             <p className="mb-3 font-mono text-sm font-bold text-brand-400">{step.n}</p>
             <h3 className="mb-2 text-lg font-bold">{step.title}</h3>

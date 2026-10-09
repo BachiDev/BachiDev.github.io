@@ -4,13 +4,16 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Check, Expand, ExternalLink, X } from "lucide-react";
 import type { Project } from "@/data/projects";
+import type { Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { Button } from "./Button";
 import { Card } from "./ui/Card";
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, locale }: { project: Project; locale: Locale }) {
   const [enlarged, setEnlarged] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const labels = getDictionary(locale).projectCard;
   // Card-size thumbnail; the full-size image is reserved for the lightbox.
   const thumbnail = project.image.replace(/\.webp$/, "-sm.webp");
 
@@ -41,12 +44,12 @@ export function ProjectCard({ project }: { project: Project }) {
           ref={triggerRef}
           type="button"
           onClick={() => setEnlarged(true)}
-          aria-label={`Enlarge screenshot of ${project.name}`}
+          aria-label={`${labels.enlargeScreenshot} ${project.name}`}
           className="group relative mb-4 block h-48 w-full cursor-zoom-in overflow-hidden rounded-md"
         >
           <Image
             src={thumbnail}
-            alt={`Screenshot of ${project.name}`}
+            alt={`${labels.screenshotAlt} ${project.name}`}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-contain transition-opacity duration-300 group-hover:opacity-75"
@@ -100,11 +103,11 @@ export function ProjectCard({ project }: { project: Project }) {
               className="invert"
               aria-hidden="true"
             />
-            Source Code
+            {labels.sourceCode}
           </Button>
           <Button href={project.liveUrl} className="w-full">
             <ExternalLink className="h-4 w-4" aria-hidden="true" />
-            Live Demo
+            {labels.liveDemo}
           </Button>
         </div>
       </Card>
@@ -113,7 +116,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={`Screenshot of ${project.name}`}
+          aria-label={`${labels.screenshotAlt} ${project.name}`}
           className="fixed inset-0 z-[60] flex cursor-zoom-out items-center justify-center bg-black/80 p-4"
           onClick={close}
         >
@@ -121,7 +124,7 @@ export function ProjectCard({ project }: { project: Project }) {
             ref={closeRef}
             type="button"
             onClick={close}
-            aria-label="Close enlarged screenshot"
+            aria-label={labels.closeEnlarged}
             className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
           >
             <X className="h-5 w-5" />
@@ -129,7 +132,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <div className="relative h-full max-h-[90vh] w-full max-w-[90vw]">
             <Image
               src={project.image}
-              alt={`Screenshot of ${project.name}`}
+              alt={`${labels.screenshotAlt} ${project.name}`}
               fill
               sizes="90vw"
               className="object-contain"

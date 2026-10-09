@@ -1,48 +1,59 @@
 import type { Metadata } from "next";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+import { PersonJsonLd } from "../components/JsonLd";
 import { ProjectCard } from "../components/ProjectCard";
 import { Button } from "../components/Button";
 import { Section } from "../components/ui/Section";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data/projects";
+import { anchorPath, homePath } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
+
+const dict = getDictionary("en");
 
 export const metadata: Metadata = {
-  title: "Selected Work",
-  description:
-    "Selected projects by Fabian Bachmayer — full-stack web apps, machine learning, and frontend builds.",
+  title: dict.workPage.metaTitle,
+  description: dict.workPage.metaDescription,
+  alternates: {
+    canonical: "https://bachi.dev/work",
+    languages: {
+      en: "https://bachi.dev/work",
+      de: "https://bachi.dev/de/work",
+      "x-default": "https://bachi.dev/work",
+    },
+  },
 };
 
 export default function WorkPage() {
+  const t = dict.workPage;
   return (
     <div className="flex min-h-[100dvh] flex-col">
-      <Header />
+      <a href="#main" className="skip-link">
+        {dict.skipLink}
+      </a>
+      <Header locale="en" switchHref="/de/work" />
       <main id="main" className="flex-1 pt-14">
-        <Section
-          eyebrow="Portfolio"
-          title="Selected Work"
-          lede="Every project below is live and open source — click through, try the demos, read the code."
-        >
+        <Section eyebrow={t.eyebrow} title={t.title} lede={t.lede}>
           <div className="grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
+            {getProjects("en").map((project) => (
+              <ProjectCard key={project.slug} project={project} locale="en" />
             ))}
           </div>
           <div className="mx-auto mt-12 max-w-xl space-y-4 text-center">
-            <p className="text-lg text-zinc-400">
-              Like what you see? Let&apos;s talk about your project.
-            </p>
+            <p className="text-lg text-zinc-400">{t.ctaText}</p>
             <div className="flex flex-col justify-center gap-3 sm:flex-row">
-              <Button href="/#contact" size="lg">
-                Get in Touch
+              <Button href={anchorPath("en", "contact")} size="lg">
+                {t.ctaPrimary}
               </Button>
-              <Button href="/" variant="secondary" size="lg">
-                Back to Overview
+              <Button href={homePath("en")} variant="secondary" size="lg">
+                {t.ctaSecondary}
               </Button>
             </div>
           </div>
         </Section>
       </main>
-      <Footer />
+      <Footer locale="en" />
+      <PersonJsonLd locale="en" />
     </div>
   );
 }

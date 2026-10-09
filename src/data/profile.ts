@@ -1,16 +1,11 @@
-// Single source of truth for profile content used across sections.
-// Copy changes should start here, not in JSX.
+// Single source of truth for locale-independent profile constants.
+// Translatable copy (role, tagline, location, …) lives in src/i18n/{en,de}.ts.
 
 export const profile = {
   name: "Fabian Bachmayer",
-  role: "Full-Stack Developer",
-  tagline: "I build fast, maintainable web and mobile apps — from requirements to production.",
-  location: "Vienna, Austria (CET)",
-  languages: "German (Native) · English · Spanish (basics)",
   email: "fabian@bachi.dev",
   // Toggle the availability badge in the hero.
   available: true,
-  availabilityNote: "Available for new projects",
   socials: [
     { label: "GitHub", href: "https://github.com/BachiDev" },
     { label: "Email", href: "mailto:fabian@bachi.dev" },

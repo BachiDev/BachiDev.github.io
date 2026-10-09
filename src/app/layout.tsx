@@ -61,37 +61,18 @@ export const viewport: Viewport = {
   themeColor: "#09090b",
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Fabian Bachmayer",
-  jobTitle: "Full-Stack Developer",
-  url: siteUrl,
-  email: "mailto:fabian@bachi.dev",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Vienna",
-    addressCountry: "AT",
-  },
-  sameAs: ["https://github.com/BachiDev"],
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
+    // NOTE: html lang stays "en" (only the root layout may render <html>).
+    // German pages fix this at runtime via HtmlLang (src/app/de/) and are
+    // fully annotated for crawlers via hreflang alternates in metadata.
     <html lang="en">
       <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
-        <a href="#main" className="skip-link">
-          Skip to content
-        </a>
         {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
         <noscript>
           <style>{`.reveal{opacity:1 !important;transform:none !important;}`}</style>
         </noscript>

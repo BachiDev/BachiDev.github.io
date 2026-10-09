@@ -1,53 +1,18 @@
 import { Code2, Database, Rocket, Smartphone } from "lucide-react";
+import type { Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { Card } from "./ui/Card";
 import { Reveal } from "./ui/Reveal";
 import { Section } from "./ui/Section";
 
-const services = [
-  {
-    icon: Code2,
-    title: "Web Development",
-    description:
-      "Modern, responsive, and performant web apps built with React, Next.js, and TypeScript.",
-    points: [
-      "Responsive, accessible interfaces",
-      "SEO-friendly server rendering",
-      "Deployed, monitored, documented",
-    ],
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Development",
-    description: "User-friendly mobile apps for iOS and Android from a single Flutter codebase.",
-    points: ["One codebase, both platforms", "Native-feel UI", "Store release handling"],
-  },
-  {
-    icon: Database,
-    title: "API & Data",
-    description: "REST APIs and databases designed to be scalable, secure, and easy to maintain.",
-    points: [
-      "Documented REST APIs",
-      "PostgreSQL / Firestore data models",
-      "Auth, Stripe payments, cloud deploys",
-    ],
-  },
-  {
-    icon: Rocket,
-    title: "Quality & Delivery",
-    description: "From requirements to production: scoped, tested, automated, and launched.",
-    points: ["Requirements scoping", "Automated tests + CI/CD", "Launch & post-launch support"],
-  },
-];
+const icons = [Code2, Smartphone, Database, Rocket];
 
-export function Services() {
+export function Services({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale).services;
+  const services = dict.items.map((item, i) => ({ ...item, icon: icons[i % icons.length] }));
+
   return (
-    <Section
-      id="services"
-      tone="raised"
-      eyebrow="Services"
-      title="What I can do for you"
-      lede="Four focused offers — each one ends with something live, not a slide deck."
-    >
+    <Section id="services" tone="raised" eyebrow={dict.eyebrow} title={dict.title} lede={dict.lede}>
       <div className="mx-auto grid max-w-4xl items-stretch gap-6 md:grid-cols-2">
         {services.map((service, index) => (
           <Reveal key={service.title} delay={(index % 2) * 80}>
