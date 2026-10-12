@@ -117,23 +117,23 @@ export const en = {
       name: "Firebase Webstore",
       type: "Fullstack",
       description:
-        "A demo e-commerce platform with user authentication and secure payment processing through Stripe, utilizing Webhooks and Cloud Functions to maintain real-time data synchronization.",
+        "A demo e-commerce storefront with guest and passwordless auth, Stripe Checkout for one-time and subscription purchases, and role-gated content (Starter → Pro → Premium) synced via Firestore and Cloud Functions.",
       outcome:
-        "End-to-end demo shop: auth, Firestore sync, and Stripe payments via Cloud Functions webhooks.",
+        "Complete shop flow: guest linking, Firestore-synced catalog, and Stripe payments plus subscriptions with a customer portal.",
     },
     "hand-gesture-control": {
       name: "Hand Gesture Control",
       type: "Machine Learning",
       description:
-        "Control a user interface using real-time hand gestures captured from your webcam. This project uses machine learning to recognize specific hand poses and translate them into actions like scrolling and toggling content.",
+        "Turns your webcam into a controller: real-time hand tracking maps thumbs up/down to scrolling, the victory sign to light/dark theme flips, and open-palm flings and push/pull to tab switches and camera-frame resizing. All ML runs in-browser — no video leaves your device.",
       outcome:
-        "Real-time webcam gesture recognition driving a web UI — scrolling and toggling content hands-free.",
+        "In-browser TF.js hand tracking (21 landmarks) driving scroll, theme, tabs, and frame resize — plus Gesture Lab, HUD, and full keyboard fallback.",
     },
     "crm-demo": {
       name: "CRM Demo",
       type: "Fullstack",
       description:
-        "A demo CRM application featuring a RESTful API and a database, designed to showcase modern web development practices with a focus on clean architecture and robust deployment.",
+        "A full-stack CRM reference with an Angular 20 frontend and a Spring Boot 3 REST API on PostgreSQL (Neon), containerized with Docker and documented with Swagger — frontend on GitHub Pages, API on Render.",
       outcome:
         "Cleanly layered reference build from Angular UI to containerized PostgreSQL, with a Swagger-documented REST API.",
     },
@@ -141,15 +141,17 @@ export const en = {
       name: "Weather Dashboard",
       type: "Frontend",
       description:
-        "An interactive weather dashboard displaying real-time weather data and forecasts using the free Weather API from Open-Meteo.",
-      outcome: "Real-time forecasts on the free Open-Meteo API — no keys, no backend.",
+        "Search any city worldwide for current conditions plus 7-day daily and detailed hourly forecasts with charts — MUI interface with geolocation, city compare, and command palette, powered by the keyless Open-Meteo APIs.",
+      outcome:
+        "City search plus geolocation with current, hourly, and 7-day forecasts on keyless Open-Meteo — no backend, no keys.",
     },
     "connect-4": {
       name: "Connect 4",
       type: "Frontend",
       description:
-        "A classical game of Connect 4, playable against other players or the computer, hosted on GitHub Pages.",
-      outcome: "Playable against a friend or the computer, shipped as a static page.",
+        "A polished, accessible Connect 4: local two-player or versus a minimax AI (Normal plus Strong depth-4 in a Web Worker), with full undo/redo, keyboard navigation, screen-reader announcements, and session stats — no backend.",
+      outcome:
+        "Two-player or versus the computer with Strong AI, undo/redo, and an accessible board — shipped as a static page.",
     },
   } as Record<string, { name: string; type: string; description: string; outcome: string }>,
   projectCard: {

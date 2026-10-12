@@ -120,23 +120,23 @@ export const de: Dictionary = {
       name: "Firebase Webstore",
       type: "Fullstack",
       description:
-        "Eine Demo-E-Commerce-Plattform mit Benutzerauthentifizierung und sicherer Zahlungsabwicklung über Stripe — mit Webhooks und Cloud Functions für Echtzeit-Datensynchronisation.",
+        "Eine Demo-E-Commerce-Plattform mit Gast- und passwortloser Authentifizierung, Stripe-Checkout für Einzel- und Abo-Käufe sowie rollenbasierten Inhalten (Starter → Pro → Premium) — synchronisiert via Firestore und Cloud Functions.",
       outcome:
-        "Kompletter Demo-Shop: Auth, Firestore-Sync und Stripe-Zahlungen via Cloud-Functions-Webhooks.",
+        "Kompletter Shop-Flow: Gast-Verknüpfung, Firestore-synchronisierter Katalog sowie Stripe-Zahlungen und Abos mit Kundenportal.",
     },
     "hand-gesture-control": {
       name: "Hand Gesture Control",
       type: "Maschinelles Lernen",
       description:
-        "Steuern Sie eine Benutzeroberfläche mit Echtzeit-Handgesten Ihrer Webcam. Machine Learning erkennt bestimmte Handhaltungen und übersetzt sie in Aktionen wie Scrollen und Umschalten von Inhalten.",
+        "Verwandelt Ihre Webcam in einen Controller: Echtzeit-Hand-Tracking übersetzt Daumen hoch/runter in Scrollen, das Victory-Zeichen in Hell/Dunkel-Wechsel und die offene Handfläche (Wischen/Drücken) in Tab-Wechsel und Kamera-Zoom. Alle ML läuft im Browser — kein Video verlässt Ihr Gerät.",
       outcome:
-        "Echtzeit-Gestenerkennung per Webcam steuert ein Web-UI — freihändiges Scrollen und Umschalten.",
+        "TF.js-Hand-Tracking im Browser (21 Landmarken) steuert Scrollen, Theme, Tabs und Bildgröße — plus Gesture Lab, HUD und vollständige Tastatursteuerung.",
     },
     "crm-demo": {
       name: "CRM Demo",
       type: "Fullstack",
       description:
-        "Eine Demo-CRM-Anwendung mit RESTful API und Datenbank — moderne Webentwicklung mit Fokus auf saubere Architektur und robustes Deployment.",
+        "Eine Full-Stack-CRM-Referenz mit Angular-20-Frontend und Spring-Boot-3-REST-API auf PostgreSQL (Neon), containerisiert mit Docker und dokumentiert mit Swagger — Frontend auf GitHub Pages, API auf Render.",
       outcome:
         "Sauber geschichteter Referenzbau vom Angular-UI bis zum containerisierten PostgreSQL, mit Swagger-dokumentierter REST-API.",
     },
@@ -144,16 +144,17 @@ export const de: Dictionary = {
       name: "Weather Dashboard",
       type: "Frontend",
       description:
-        "Ein interaktives Wetter-Dashboard mit Echtzeit-Wetterdaten und Vorhersagen über die kostenlose Wetter-API von Open-Meteo.",
+        "Suchen Sie jede Stadt weltweit: aktuelle Werte plus 7-Tage- und detaillierte Stunden-Vorhersagen mit Diagrammen — MUI-Oberfläche mit Geolokalisierung, Städte-Vergleich und Befehlspalette, betrieben mit den keylosen Open-Meteo-APIs.",
       outcome:
-        "Echtzeit-Vorhersagen über die kostenlose Open-Meteo-API — keine Keys, kein Backend.",
+        "Stadtsuche plus Geolokalisierung mit aktuellen, stündlichen und 7-Tage-Vorhersagen über keyloses Open-Meteo — kein Backend, keine Keys.",
     },
     "connect-4": {
       name: "Connect 4",
       type: "Frontend",
       description:
-        "Das klassische Vier-gewinnt-Spiel — gegen andere oder den Computer spielbar, gehostet auf GitHub Pages.",
-      outcome: "Spielbar gegen Freunde oder den Computer, als statische Seite bereitgestellt.",
+        "Ein gepflegtes, barrierefreies Vier-gewinnt: lokal zu zweit oder gegen eine Minimax-KI (Normal plus Stark/Tiefe 4 in einem Web Worker), mit vollständigem Undo/Redo, Tastaturnavigation, Screenreader-Ansagen und Sitzungsstatistiken — ohne Backend.",
+      outcome:
+        "Zu zweit oder gegen den Computer mit starker KI, Undo/Redo und barrierefreiem Brett — als statische Seite bereitgestellt.",
     },
   },
   projectCard: {

@@ -72,6 +72,7 @@ const projectBases: ProjectBase[] = [
     image: "/work/crm-demo.webp",
     stack: [
       { name: "Angular", icon: icon("angular") },
+      { name: "Tailwind CSS", icon: icon("tailwind") },
       { name: "Spring Boot", icon: icon("spring-boot") },
       { name: "Hibernate", icon: icon("hibernate") },
       { name: "Java", icon: icon("java") },
@@ -82,7 +83,7 @@ const projectBases: ProjectBase[] = [
       { name: "API", icon: icon("api") },
     ],
     githubUrl: "https://github.com/BachiDev/crm-demo",
-    liveUrl: "https://bachidev.github.io/crm-demo",
+    liveUrl: "https://bachi.dev/crm-demo/",
     featured: true,
   },
   {
@@ -92,6 +93,7 @@ const projectBases: ProjectBase[] = [
       { name: "Next.js", icon: icon("next") },
       { name: "React", icon: icon("react") },
       { name: "TypeScript", icon: icon("typescript") },
+      { name: "MUI", icon: icon("mui") },
       { name: "Tailwind CSS", icon: icon("tailwind") },
       { name: "API", icon: icon("api") },
       { name: "JSON", icon: icon("json") },
@@ -110,7 +112,7 @@ const projectBases: ProjectBase[] = [
       { name: "Tailwind CSS", icon: icon("tailwind") },
     ],
     githubUrl: "https://github.com/BachiDev/Connect-4",
-    liveUrl: "https://bachidev.github.io/Connect-4/",
+    liveUrl: "https://bachi.dev/Connect-4/",
     featured: false,
   },
 ];
